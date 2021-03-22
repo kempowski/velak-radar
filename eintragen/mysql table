@@ -1,0 +1,12 @@
+CREATE TABLE projects(
+	usersId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    usersName varchar(128) NOT NULL,
+    usersEmail varchar(128) NOT NULL,
+    projectName varchar(128) NOT NULL,
+    projectDescription TEXT NOT NULL,
+    ytLink varchar(128) NOT NULL,
+    lat decimal(16,14) NOT NULL,
+    lng decimal(16,14) NOT NULL
+);
+
+INSERT INTO projects (usersName, usersEmail, projectName, projectDescription, ytLink, lat, lng) VALUES (?, ?, ?, ?, ?, ?, ?);

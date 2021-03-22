@@ -1,0 +1,151 @@
+@font-face {
+	  font-family: 'recursive';
+	  src: url('../font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf') format('truetype');
+	  src: url('../font/Recursive-SansLinearLight.woff') format('woff');
+}
+body{
+	overflow: hidden;
+}
+*{
+	box-sizing: border-box;
+	font-family: 'Roboto Mono', monospace;
+}
+#intro{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	z-index: 99;
+	background-color: #fff;
+    transition: opacity 1.5s ease;
+}
+#intro p {
+	width: 600px;
+	line-height: 16pt;
+	margin: 0;
+}
+#click{
+	padding-top: 40px;
+	text-align: center;
+}
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+#map{
+	width: 100vw;
+	height: 100vh;
+	/*width: 500px;*/
+	/*height: 500px;*/
+	z-index: 3;
+	background-color: #fff;
+}
+#content{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 0;
+	width: 400px;
+	height: 100vh;
+	background-color: white;
+	z-index: 4;
+	transition: left 0.5s;
+	opacity: 0.85;
+}
+.active{
+	left: 0px;
+}
+.closed{
+	left: -400px;
+}
+#x{
+	width: 24px;
+	height: 24px;
+	margin-top: 20px;
+	margin-right: 20px;
+	font-size: 42pt;
+	/*scale: 0.66;*/
+	opacity: 0.8;
+	transition: opacity 0.25s ease;
+	align-self: flex-end;
+}
+#x:hover{
+	opacity: 1;
+}
+#audioPlayer{
+	width: 360px;
+	align-self: center;
+	margin-top: 20px;
+}
+#text{
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+}
+#text > *{
+	margin: 0;
+}
+#video{
+	max-width: 400px;
+	margin-top: 20px;
+	text-align: center;
+	align-self: center;
+}
+#videoWrap{
+	text-align: center
+}
+#projekt{
+	text-align: right;
+}
+#nameK{
+	text-align: right;
+}
+#description{
+	font-size: 14px;
+	line-height: 16pt;
+	margin-top: 15px;
+}
+#website{
+	text-align: right;
+	font-weight: bold;
+	color: #000;
+	padding-top: 20px;
+	font-size: 12px;
+}
+.view{
+	display: initial;
+}
+.noView{
+	display: none;
+}
+
+@media screen and (max-width: 800px) {
+	#content{
+		width: 100%;
+	}
+	.closed{
+		left: -100vw;
+	}
+	.active{
+		left: 0vw;
+	}
+}

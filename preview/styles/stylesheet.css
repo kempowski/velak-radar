@@ -1,0 +1,84 @@
+@font-face {
+	  font-family: 'recursive';
+	  src: url('../font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf') format('truetype');
+	  src: url('../font/Recursive-SansLinearLight.woff') format('woff');
+}
+body{
+	overflow: hidden;
+}
+*{
+	box-sizing: border-box;
+	font-family: 'Roboto Mono', monospace;
+}
+#intro{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	z-index: 99;
+	background-color: #fff;
+	opacity: 0.8;
+    transition: opacity 1.5s ease;
+}
+#intro p {
+	max-width: 600px;
+	line-height: 20pt;
+	padding: 20px;
+}
+#map{
+	width: 100vw;
+	height: 100vh;
+	/*width: 500px;*/
+	/*height: 500px;*/
+	z-index: 3;
+	background-color: #fff;
+}
+#content{
+	position: absolute;
+	top: 0;
+	width: 400px;
+	height: 100vh;
+	background-color: white;
+	z-index: 4;
+	transition: right 0.5s;
+	opacity: 0.85;
+}
+.active{
+	right: 0px;
+}
+.closed{
+	right: -400px;
+}
+#x{
+	padding: 20px;
+	font-size: 42pt;
+	scale: 0.66;
+	opacity: 0.8;
+	transition: opacity 0.25s ease;
+}
+#x:hover{
+	opacity: 1;
+}
+#audioPlayer{
+	width: 100%;
+}
+#text{
+	padding: 20px;
+}
+#video{
+	text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+	#content{
+		width: 100%;
+	}
+	.closed{
+		right: -100vw;
+	}
+}

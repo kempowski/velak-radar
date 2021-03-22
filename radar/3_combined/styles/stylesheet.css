@@ -1,0 +1,52 @@
+@font-face {
+	  font-family: 'recursive';
+	  src: url('../font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf') format('truetype');
+	  src: url('../font/Recursive-SansLinearLight.woff') format('woff');
+}
+body{
+	overflow: hidden;
+}
+*{
+	box-sizing: border-box;
+	font-family: recursive;
+}
+#map{
+	width: 100vw;
+	height: 100vh;
+	/*width: 500px;*/
+	/*height: 500px;*/
+	z-index: 3;
+	background-color: #fff;
+}
+#content{
+	position: absolute;
+	top: 0;
+	width: 500px;
+	height: 100vh;
+	background-color: white;
+	z-index: 4;
+	transition: right 0.5s;
+	opacity: 0.8;
+}
+.active{
+	right: 0px;
+}
+.closed{
+	right: -500px;
+}
+#x{
+	padding: 20px;
+	font-size: 42pt;
+	scale: 0.66;
+	opacity: 0.8;
+	transition: opacity 0.25s ease;
+}
+#x:hover{
+	opacity: 1;
+}
+#audioPlayer{
+	width: 100%;
+}
+#text{
+	padding: 20px;
+}
