@@ -91,6 +91,19 @@ body{
 #x:hover{
 	opacity: 1;
 }
+#interface{
+	display: flex;
+	justify-content: space-around;
+}
+#playPause{
+	width: 100px;
+}
+#volume-control {
+	width: 125px;
+}
+#playSVG{
+	display: none;
+}
 #audioPlayer{
 	width: 360px;
 	align-self: center;
@@ -123,6 +136,7 @@ body{
 	font-size: 14px;
 	line-height: 16pt;
 	margin-top: 15px;
+	text-align: right;
 }
 #website{
 	text-align: right;
@@ -136,6 +150,73 @@ body{
 }
 .noView{
 	display: none;
+}
+.circle{
+	animation: pulse 1.0s;
+	animation-iteration-count: infinite;
+  	animation-delay: .25s;
+}
+.ray1{
+	animation: pulse 1.0s ;
+	animation-iteration-count: infinite;
+  	animation-delay: 0.75s;
+}
+.ray2{
+	animation: pulse 1.0s ;
+	animation-iteration-count: infinite;
+  	animation-delay: 0.5s;
+}
+#interface{
+	display: flex;
+	align-items: center;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #000000;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-color: #ffffff;
+  border-right:  2px dashed #000;
+  border-left:  2px dashed #000;
+}
+
+.svg{
+	opacity: 1;
+	transition: opacity 0.5s ease;
+}
+.svg:hover{
+	opacity: 0.8;
+}
+.slider:hover {
+  opacity: .7;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #ffffff;
+  border-radius: 0;
+  border-width: 0;
+  cursor: pointer;
+}
+@keyframes pulse {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 @media screen and (max-width: 800px) {

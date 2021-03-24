@@ -18,4 +18,15 @@
 	};
 
 	// echo "connection to database";
+	$mountPoints = array(
+		"XKru6FMY" => "vvv1",
+		"jAT4f4tp" => "vvv2",
+		"DBj6eF2B" => "vvv3",
+		"ynjcE9Z5" => "vvv4",
+		"G6XW8aZ8" => "vvv5",
+		"2FAzjySd" => "vvv6",
+		"Z5uTtE46" => "vvv7",
+		"kq9fUq4m" => "vvv8",
+		"h5PVqGtN" => "vvv9"
+	);
 ?>

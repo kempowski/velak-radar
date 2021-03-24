@@ -12,6 +12,13 @@
 	width: 100%;
 	height: 400px;
 }
+#verifyBtn{
+	border-width: 0;
+	height: 25px;
+}
+#correct{
+	display: none;
+}
 form {
 	padding: 40px;
 	width: 800px;
@@ -81,4 +88,11 @@ form > * {
 }
 #wrap{
 	padding: 40px;
+}
+
+#sendeIcon:hover{
+	transform: scale(19);
+}
+.ray1{
+	fill: #fff;
 }

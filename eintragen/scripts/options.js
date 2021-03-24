@@ -25,3 +25,26 @@ $("#stream").change(function(){
 	$("#file").val('');
     
 });
+
+
+
+
+
+function veri(){
+	console.log("hi");
+	let input = document.getElementById("mountpoint");
+	let form = document.getElementById("correct");
+	let verifyBtn = document.getElementById("verifyBtn");
+
+	let inputVal = input.value;
+	if(inputVal in mountpoints){
+		form.style.display = "initial";
+		verifyBtn.style.backgroundColor = "green";
+		verifyBtn.style.color = "white";
+		verifyBtn.innerHTML = "verified";
+	} else {
+		verifyBtn.style.color = "white";
+		verifyBtn.style.backgroundColor = "red";
+		verifyBtn.innerHTML = "incorrect";
+	}
+}
