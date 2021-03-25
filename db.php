@@ -29,4 +29,6 @@
 		"kq9fUq4m" => "vvv8",
 		"h5PVqGtN" => "vvv9"
 	);
+
+	$streamDatum = "2021-03-23";
 ?>

@@ -58,7 +58,7 @@
 				<input type="text" id="url" name="url" placeholder="www.example.xyz">
 			</div>
 
-			<!-- <div id="audioTypeSelect">
+			<div id="audioTypeSelect">
 				<div>
 					<label id="audioS" for="audioType">Type:</label><br>
 
@@ -76,7 +76,7 @@
 					<input type="text" id="ytLink" name="ytLink" >
 				</div>
 
-			</div> -->
+			</div>
 
 
 			

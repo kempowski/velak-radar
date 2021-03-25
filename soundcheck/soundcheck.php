@@ -66,8 +66,6 @@
 	    	<a id="website" href=""></a>
     	</div>
     </div>
-    <!-- <div id="playPause">
-    </div> -->
 
     <div id="map"></div>
 
@@ -106,11 +104,12 @@
     ?>
 
 
-	<script type="text/javascript" >
+<script type="text/javascript" >
 		// holt sich das php array und macht daraus ein js objekt
 		var data = <?php echo json_encode($rows); ?>;
+		var streamDatum = <?php echo json_encode($streamDatum); ?>;
 
-		console.log(data[14].mountpoint);
+		console.log(streamDatum);
 
 		var markers = [];
 		var count;
@@ -121,13 +120,9 @@
 		map.options.minZoom = 3;
 		map.setMaxBounds([[90, -250], [-80, 250]]);
 
-		let svgIcon = "<svg version='1.1' id='sendeIcon' xmlns='http://www.w3.org/2000/svg' width='28' height='42' x='0px' y='0px' fill='white' viewBox='0 0 28.7 43.9' style='enable-background:new 0 0 28.7 43.9;' xml:space='preserve'><path class='circle' d='M12.3,8.2c0.5-0.5,1.2-0.8,2-0.8s1.4,0.3,2,0.8c1.1,1.1,1.1,2.8,0,3.9s-2.8,1.1-3.9,0S11.2,9.3,12.3,8.2z'/><g> <path class='ray1' d='M24.5,20.3l-1.4-1.4c4.8-4.8,4.8-12.7,0-17.5L24.5,0C30.1,5.6,30.1,14.7,24.5,20.3z'/> <path class='ray1' d='M4.2,20.3C-1.4,14.7-1.4,5.6,4.2,0l1.4,1.4c-4.8,4.8-4.8,12.7,0,17.5L4.2,20.3z'/></g><g> <path class='ray2' d='M20.9,16.7l-1.4-1.4c2.8-2.8,2.8-7.4,0-10.2l1.4-1.4C24.5,7.2,24.5,13.1,20.9,16.7z'/> <path class='ray2' d='M7.9,16.7c-1.7-1.7-2.7-4-2.7-6.5s1-4.8,2.7-6.5l1.4,1.4c-1.4,1.4-2.1,3.2-2.1,5.1s0.8,3.7,2.1,5.1L7.9,16.7z'  /></g><path class='antenne' d='M15.7,14c0.6-0.2,1.1-0.5,1.6-1c1.6-1.6,1.6-4.1,0-5.7s-4.1-1.6-5.7,0s-1.6,4.1,0,5.7c0.5,0.5,1,0.8,1.6,1 L5.3,44l8-7.8l10.1,7L15.7,14z M13,8.7c0.4-0.4,0.9-0.6,1.4-0.6s1,0.2,1.4,0.6c0.8,0.8,0.8,2.1,0,2.9c-0.8,0.8-2.1,0.8-2.9,0 S12.2,9.5,13,8.7z M14.5,17l3,11.4l-5-3.6L14.5,17z M9.1,37.5l2.8-10.6l4.7,3.4L9.1,37.5z M18.2,31.3l1.8,7l-5.3-3.7L18.2,31.3z'/></svg>"; 
-		let svgIcon2 = "<svg version='1.1' id='sendeIcon' xmlns='http://www.w3.org/2000/svg' width='28' height='42' x='0px' y='0px' fill='white' viewBox='0 0 28.7 43.9' style='enable-background:new 0 0 28.7 43.9;' xml:space='preserve'><path class='antenne' d='M15.7,14c0.6-0.2,1.1-0.5,1.6-1c1.6-1.6,1.6-4.1,0-5.7s-4.1-1.6-5.7,0s-1.6,4.1,0,5.7c0.5,0.5,1,0.8,1.6,1 L5.3,44l8-7.8l10.1,7L15.7,14z M13,8.7c0.4-0.4,0.9-0.6,1.4-0.6s1,0.2,1.4,0.6c0.8,0.8,0.8,2.1,0,2.9c-0.8,0.8-2.1,0.8-2.9,0 S12.2,9.5,13,8.7z M14.5,17l3,11.4l-5-3.6L14.5,17z M9.1,37.5l2.8-10.6l4.7,3.4L9.1,37.5z M18.2,31.3l1.8,7l-5.3-3.7L18.2,31.3z'/></svg>"; ; 
-
-		let myIconUrl = "data:image/svg+xml," +  encodeURI(svgIcon);
-
-		console.log(myIconUrl);
-
+		// antennen icons. mit und ohne rays
+			let svgIcon = "<svg version='1.1' id='sendeIcon' xmlns='http://www.w3.org/2000/svg' width='28' height='42' x='0px' y='0px' fill='white' viewBox='0 0 28.7 43.9' style='enable-background:new 0 0 28.7 43.9;' xml:space='preserve'><path class='circle' d='M12.3,8.2c0.5-0.5,1.2-0.8,2-0.8s1.4,0.3,2,0.8c1.1,1.1,1.1,2.8,0,3.9s-2.8,1.1-3.9,0S11.2,9.3,12.3,8.2z'/><g> <path class='ray1' d='M24.5,20.3l-1.4-1.4c4.8-4.8,4.8-12.7,0-17.5L24.5,0C30.1,5.6,30.1,14.7,24.5,20.3z'/> <path class='ray1' d='M4.2,20.3C-1.4,14.7-1.4,5.6,4.2,0l1.4,1.4c-4.8,4.8-4.8,12.7,0,17.5L4.2,20.3z'/></g><g> <path class='ray2' d='M20.9,16.7l-1.4-1.4c2.8-2.8,2.8-7.4,0-10.2l1.4-1.4C24.5,7.2,24.5,13.1,20.9,16.7z'/> <path class='ray2' d='M7.9,16.7c-1.7-1.7-2.7-4-2.7-6.5s1-4.8,2.7-6.5l1.4,1.4c-1.4,1.4-2.1,3.2-2.1,5.1s0.8,3.7,2.1,5.1L7.9,16.7z'  /></g><path class='antenne' d='M15.7,14c0.6-0.2,1.1-0.5,1.6-1c1.6-1.6,1.6-4.1,0-5.7s-4.1-1.6-5.7,0s-1.6,4.1,0,5.7c0.5,0.5,1,0.8,1.6,1 L5.3,44l8-7.8l10.1,7L15.7,14z M13,8.7c0.4-0.4,0.9-0.6,1.4-0.6s1,0.2,1.4,0.6c0.8,0.8,0.8,2.1,0,2.9c-0.8,0.8-2.1,0.8-2.9,0 S12.2,9.5,13,8.7z M14.5,17l3,11.4l-5-3.6L14.5,17z M9.1,37.5l2.8-10.6l4.7,3.4L9.1,37.5z M18.2,31.3l1.8,7l-5.3-3.7L18.2,31.3z'/></svg>"; 
+			let svgIcon2 = "<svg version='1.1' id='sendeIcon' xmlns='http://www.w3.org/2000/svg' width='28' height='42' x='0px' y='0px' fill='white' viewBox='0 0 28.7 43.9' style='enable-background:new 0 0 28.7 43.9;' xml:space='preserve'><path class='antenne' d='M15.7,14c0.6-0.2,1.1-0.5,1.6-1c1.6-1.6,1.6-4.1,0-5.7s-4.1-1.6-5.7,0s-1.6,4.1,0,5.7c0.5,0.5,1,0.8,1.6,1 L5.3,44l8-7.8l10.1,7L15.7,14z M13,8.7c0.4-0.4,0.9-0.6,1.4-0.6s1,0.2,1.4,0.6c0.8,0.8,0.8,2.1,0,2.9c-0.8,0.8-2.1,0.8-2.9,0 S12.2,9.5,13,8.7z M14.5,17l3,11.4l-5-3.6L14.5,17z M9.1,37.5l2.8-10.6l4.7,3.4L9.1,37.5z M18.2,31.3l1.8,7l-5.3-3.7L18.2,31.3z'/></svg>"; ; 
 
 		//edus map:
 		L.tileLayer("https://api.mapbox.com/styles/v1/zyxetc/ckl5efafz2aqt17mu8abux77z/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoienl4ZXRjIiwiYSI6ImNra3ZvcWs5ZTA4czIyeG80dnNlZWk5eDEifQ.eeJhDOpUW6uzdsEMnpmlcg", {	
@@ -175,7 +170,7 @@
 			//HIER NACH DATUM CHECKEN1
 			var datum = data[i].datum;
 			datum = datum.slice(0,10);
-			if(datum == "2021-03-23"){
+			if(datum == streamDatum){
 				var m = new L.marker([latitude, longitude], {icon: antenne1}).addTo(myFeatureGroup);
 			} else {
 				var m = new L.marker([latitude, longitude], {icon: antenne2}).addTo(myFeatureGroup);
@@ -194,6 +189,7 @@
 		  // console.log(event.layer);
 		  map.flyTo(event.latlng, 8);
 		  drawContent(active_m);
+
 		}
 		// console.log(markers);
 
@@ -222,6 +218,8 @@
 				menu = true;
 				player.pause();
 				// ytPlayer.pauseVideo();
+				play.style.display = "none";
+				pause.style.display = "initial";
 		});
 
 		// function pauseAudio(){
@@ -231,13 +229,12 @@
 		// }
 
 		range.addEventListener("change", () => {
-			console.log(range.value);
+			// console.log(range.value);
 			player.volume = range.value;
 		});
 
 		playPause.addEventListener("click", () => {
 			if (menu){
-				console.log("hi");
 				player.pause();
 				play.style.display = "initial";
 				pause.style.display = "none";
@@ -251,8 +248,7 @@
 		});
 
 		function drawContent(_index){
-			console.log("daten _index  " + data[_index]);
-			// console.log(video);
+			// console.log("daten _index  " + data[_index]);
 
 			if(menu){
 				content.classList.remove("closed");
@@ -277,25 +273,34 @@
 			// 	audioSource.setAttribute("type", "audio/wav");
 			// }
 
+			console.log(data[_index].datum)
+			var datum = data[_index].datum;
+			console.log(datum.slice(0,10));
+			console.log(streamDatum);
+			if(datum.slice(0,10) == streamDatum){
+				audioSource.src = "http://157.90.162.214:8000/" + data[_index].mountpoint;
+			} else {
+				console.log(data[_index].fileName)
+				audioSource.src = "../eintragen/uploads/" + data[_index].fileName;
+			}
 
-			audioSource.src = "http://157.90.162.214:8000/" + data[_index].mountpoint;
+			// url von tong
 			player.load();
 			player.play();
 
-			
-
+		
 			projekt.innerHTML = data[_index].projectName; 
 			nameK.innerHTML =  data[_index].usersName;
 			
 			description.innerHTML = data[_index].projectDescription;
-			website.setAttribute("href", data[_index].url);
+			website.href = "http://" + data[_index].url;
+			website.target = "_blank";
 			website.innerHTML = data[_index].url;
 			
 			menu = true;
 		}
 	</script>
 	<script src="scripts/intro.js"></script>
-
 
 </body>
 </html>

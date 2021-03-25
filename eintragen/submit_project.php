@@ -48,40 +48,40 @@ if (isset($_POST["submit"])){
 	// echo($_FILES['sound']);
 
 
-	// if (!($_FILES['sound']["error"] == 4)){
-	// 	$file = $_FILES['sound'];
-	// 	$fileName = $_FILES['sound']['name'];
-	// 	$fileTmpName = $_FILES['sound']['tmp_name'];
-	// 	$fileSize = $_FILES['sound']['size'];
-	// 	$fileError = $_FILES['sound']['error'];
-	// 	$fileType = $_FILES['sound']['type'];
+	if (!($_FILES['sound']["error"] == 4)){
+		$file = $_FILES['sound'];
+		$fileName = $_FILES['sound']['name'];
+		$fileTmpName = $_FILES['sound']['tmp_name'];
+		$fileSize = $_FILES['sound']['size'];
+		$fileError = $_FILES['sound']['error'];
+		$fileType = $_FILES['sound']['type'];
 
-	// 	$fileExt = explode('.', $fileName);
-	// 	$fileActualExt = strtolower(end($fileExt));
+		$fileExt = explode('.', $fileName);
+		$fileActualExt = strtolower(end($fileExt));
 
-	// 	// echo ($fileName);
-	// 	// echo "<br>";
-	// 	print_r($file);
+		// echo ($fileName);
+		// echo "<br>";
+		print_r($file);
 
-	// 	$allowed = array('mp3', 'ogg', 'wav');
+		$allowed = array('mp3', 'ogg', 'wav');
 
-	// 	if( in_array($fileActualExt, $allowed)){
-	// 		if($fileError === 0){
-	// 			// if($fileSize < 10000000)	
-	// 				// $fileNameNew = uniqid('', true) . '.' . $fileActualExt;
-	// 				$fileNameNew = $name . '.' . $fileActualExt;
-	// 				$fileDestination = 'uploads/' . $fileNameNew;
-	// 				move_uploaded_file($fileTmpName, $fileDestination);
-	// 				echo("uploaded");
-	// 		} else {
-	// 			echo "there was an error uploading your file";
-	// 		}
-	// 	} else {
-	// 		echo "you cant upload files of this type<br>";
-	// 	}
-	// }	else {
-	// 	$fileNameNew = ""; 
-	// }
+		if( in_array($fileActualExt, $allowed)){
+			if($fileError === 0){
+				// if($fileSize < 10000000)	
+					// $fileNameNew = uniqid('', true) . '.' . $fileActualExt;
+					$fileNameNew = $name . '.' . $fileActualExt;
+					$fileDestination = 'uploads/' . $fileNameNew;
+					move_uploaded_file($fileTmpName, $fileDestination);
+					echo("uploaded");
+			} else {
+				echo "there was an error uploading your file";
+			}
+		} else {
+			echo "you cant upload files of this type<br>";
+		}
+	}	else {
+		$fileNameNew = ""; 
+	}
 
 	// string fuer die datenbank
 	$gesamt = $name . " " . $email . " " . $projectName . " " . $projectDescription . " " . $ytLink . " " . $lat . " " . $lng . " " . $fileNameNew . " " . $url . " " . $mountpoint . " " . $datum;
