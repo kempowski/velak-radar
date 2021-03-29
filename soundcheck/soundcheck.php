@@ -67,6 +67,8 @@
     	</div>
     </div>
 
+    <div id="legende"></div>
+
     <div id="map"></div>
 
     <?php
@@ -299,6 +301,17 @@
 			
 			menu = true;
 		}
+
+		// legende
+		let legende = document.getElementById("legende");
+		// legende.innerHTML = svgIcon + svgIcon2 ;
+		let iconTextLine1 = document.createElement("div");
+		let iconTextLine2 = document.createElement("div");
+		iconTextLine1.innerHTML = svgIcon + "<p>......live</p>" ;
+		iconTextLine2.innerHTML = svgIcon2 + "<p>..previous</p>";
+		legende.appendChild(iconTextLine1);
+		legende.appendChild(iconTextLine2);
+
 	</script>
 	<script src="scripts/intro.js"></script>
 
